@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_reg_app/css/styles.css' %}" media="screen" title="login_reg" charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"                     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'login_reg_app/login_reg.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>Login/Reg</h1>
+                </div>
+                {% for message in messages %}
+                <h2>{{message}}</h2>
+                {% endfor %}
+           </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-12">
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <h1 class="header">login</h1>
+                    <div class="form-group login">
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" autofocus>
+                    </div>
+                    <div class="form-group login">
+                        <input type="password" class="form-control" name="password" id="password" aria-describedby="emailHelp" placeholder="Enter Password">
+                    </div>
+                    <button type="submit" name="login" class="btn btn-primary floatright login loginbtn">login</button>
+                </form>
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <h1 class="header">register</h1>
+                    <div class="form-group login">
+                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
+                    </div>
+                    <div class="form-group login">
+                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
+                    </div>
+                    <div class="form-group login">
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
+                    </div>
+                    <div class="form-group login">
+                        <input type="password" class="form-control" name="password" id="password" aria-describedby="emailHelp" placeholder="Password">
+                    </div>
+                    <div class="form-group login">
+                        <input type="password" class="form-control" name="conf_password" id="conf_password" aria-describedby="emailHelp" placeholder="Confirm Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary floatright login loginbtn">register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
