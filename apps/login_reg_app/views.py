@@ -24,7 +24,7 @@ def register(request):
     if len(errors):
         for tag, error in errors.iteritems():
             messages.add_message(request, messages.ERROR, errors[tag])
-        return redirect('login_reg_app:login')
+        return redirect('/')
     else:
         first_name =  request.POST['first_name']
         last_name = request.POST['last_name']
@@ -35,13 +35,13 @@ def register(request):
 
         if not user:
             messages.add_message(request, messages.ERROR, "User email already exists.")
-            return redirect('login_reg_app:login')
+            return redirect('/')
         else:
             request.session['user_id'] = user.id
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
             request.session['email'] = user.email
-            return redirect('login_reg_app/dashboard.html')
+            return redirect('/dashboard')
         
 
 def login(request):
