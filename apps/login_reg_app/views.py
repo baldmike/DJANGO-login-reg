@@ -58,7 +58,7 @@ def login(request):
             messages.add_message(request, messages.ERROR, "Invalid login info.")
             return redirect("/")
     except:
-        messages.add_message(request, messages.ERROR, "Not in database")
+        messages.add_message(request, messages.ERROR, "That email is not in our database, please register")
         return redirect('/')
 
 def logout(request):
